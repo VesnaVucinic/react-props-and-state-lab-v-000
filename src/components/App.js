@@ -42,8 +42,23 @@ class App extends React.Component {
       .then(petsJSONArray => {
         this.setState({
           pets: petsJSONArray
-        })
+        }, ()=>console.log(this.state.pets))
       })
+  }
+
+  onAdoptPet = (id) => {
+    // const pet = Object.assign({}, this.state.pets.find(p => p.id === id))
+    // above and below are equiavalent
+    const pet = { ...this.state.pets.find(p => p.id === id)}
+    // set the state of a pet from the opposite of what it was...
+    pet.isAdopted = pet.isAdopted ? false : true
+    const index = this.state.pets.indexOf(pet)
+    console.log("index is", index)
+    this.setState({
+      pets: [...this.state.pets.slice(0, index), pet, ...this.state.pets(index, this.state.pets.length)]
+    }, console.log(this.state.pets))
+
+
   }
 
   render() {
@@ -63,7 +78,7 @@ class App extends React.Component {
               />
             </div>
             <div className="twelve wide column">
-              <PetBrowser pets={this.state.pets} />
+              <PetBrowser onAdoptPet={this.onAdoptPet} pets={this.state.pets} />
             </div>
           </div>
         </div>
