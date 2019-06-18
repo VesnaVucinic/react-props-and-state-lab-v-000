@@ -1,6 +1,10 @@
 import React from 'react'
 
 class Pet extends React.Component {
+  constructor(){
+    super()
+    console.log("hello from constructor")
+  }
   render() {
     // destructure the incoming prop object!
     const {
@@ -10,14 +14,11 @@ class Pet extends React.Component {
       weight,
       gender,
       isAdopted,
-      id
+      id,
+      toys
     } = this.props.pet
+
     const { onAdoptPet } = this.props
-    // these four line of code are equivalent to the single line above!
-    // const name = this.props.pet.name
-    // const type = this.props.pet.type
-    // const age = this.props.pet.age
-    // const weight = this.props.pet.weight
 
     return (
       <div className="card">
@@ -34,10 +35,19 @@ class Pet extends React.Component {
             <p>Age: {age}</p>
             <p>Weight: {weight}</p>
           </div>
+          <div>
+            {toys.length > 0 ? toys.map(t => <p>{t.name}</p>) : "LOADING..."}
+          </div>
         </div>
         <div className="extra content">
-          <button className="ui disabled button">Already adopted</button>
-          <button onClick={()=>onAdoptPet(id)} className="ui primary button">Adopt pet</button>
+          {
+            isAdopted ?
+              <button className="ui disabled button">Already adopted</button>
+            :
+              <button onClick={()=>onAdoptPet(id)} className="ui primary button">Adopt pet</button>
+          }
+
+
         </div>
       </div>
     )
