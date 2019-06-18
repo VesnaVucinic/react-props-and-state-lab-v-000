@@ -102,3 +102,9 @@ adoption status.
 - [State Updates May Be Asynchronous](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/react-props-and-state-lab'>Props And State Lab</a> on Learn.co and start learning to code for free.</p>
+
+Walkthrough vids
+Part 1
+Part 2
+Part 3
+Part 4 https://youtu.be/f8gMWf6uRQg
