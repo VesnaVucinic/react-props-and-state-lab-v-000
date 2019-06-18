@@ -1,6 +1,8 @@
 # React Props and State Lab
 
-# REGARDING BRANCHES, AND FOLLOWING ALONG WITH POSTED WALK-THROUGH AND STUDY GROUP VIDEOS:
+# PLEASE NOTE:
+
+If you are looking at this video as a result of attending a study group or watching a recorded walkthrough of solving this lab, notice the following branches and make sure you're on the right one!
 
 1. `master` is just the lab in its original form, unsolved
 2. `recorded-study-group` is the lab after working through the following videos:
