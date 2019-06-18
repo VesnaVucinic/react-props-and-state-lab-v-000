@@ -4,7 +4,7 @@
 
 1. `master` is just the lab in its original form, unsolved
 2. `recorded-study-group` is the lab after working through the following videos:
-Walkthrough vids
+
  - [Part 1](https://instruction.learn.co/student/video_lectures#/439)
  - [Part 2](https://instruction.learn.co/student/video_lectures#/440)
  - [Part 3](https://instruction.learn.co/student/video_lectures#/441)
