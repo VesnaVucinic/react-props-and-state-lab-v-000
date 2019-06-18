@@ -1,10 +1,12 @@
 # React Props and State Lab
 
-# Please note that there are 3 branches in this repo:
+# PLEASE NOTE:
+
+If you are looking at this video as a result of attending a study group or watching a recorded walkthrough of solving this lab, notice the following branches and make sure you're on the right one!
 
 1. `master` is just the lab in its original form, unsolved
 2. `recorded-study-group` is the lab after working through the following videos:
-Walkthrough vids
+
  - [Part 1](https://instruction.learn.co/student/video_lectures#/439)
  - [Part 2](https://instruction.learn.co/student/video_lectures#/440)
  - [Part 3](https://instruction.learn.co/student/video_lectures#/441)
