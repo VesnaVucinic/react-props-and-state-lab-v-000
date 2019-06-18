@@ -1,6 +1,6 @@
 # React Props and State Lab
 
-# Please note that there are 3 branches in this repo:
+# REGARDING BRANCHES, AND FOLLOWING ALONG WITH POSTED WALK-THROUGH AND STUDY GROUP VIDEOS:
 
 1. `master` is just the lab in its original form, unsolved
 2. `recorded-study-group` is the lab after working through the following videos:
