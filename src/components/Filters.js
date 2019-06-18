@@ -1,16 +1,17 @@
 import React from 'react'
+import { changeFilter } from '../actions/filters.js'
+import { connect } from 'react-redux'
 
 class Filters extends React.Component {
 
   render() {
-
     return (
       <div className="ui form">
 
         <h3>Animal type</h3>
         <div className="field">
           <select
-            onChange={this.props.onChangeType}
+            onChange={event => this.props.changeFilter(event.target.value)}
             name="type"
             id="type">
               <option value="all">All</option>
@@ -31,4 +32,5 @@ class Filters extends React.Component {
   }
 }
 
-export default Filters
+
+export default connect(null, { changeFilter })(Filters)
