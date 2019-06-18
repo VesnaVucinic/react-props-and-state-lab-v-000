@@ -1,5 +1,17 @@
 # React Props and State Lab
 
+# Please note that there are 3 branches in this repo:
+
+1. `master` is just the lab in its original form, unsolved
+2. `recorded-study-group` is the lab after working through the following videos:
+Walkthrough vids
+ - [Part 1](https://instruction.learn.co/student/video_lectures#/439)
+ - [Part 2](https://instruction.learn.co/student/video_lectures#/440)
+ - [Part 3](https://instruction.learn.co/student/video_lectures#/441)
+ - [Part 4](https://instruction.learn.co/student/video_lectures#/442)
+
+3. `add-redux` is a branch where we begin to add redux
+
 ## Overview
 
 You'll build a small React application where you'll update state in response to
@@ -102,9 +114,3 @@ adoption status.
 - [State Updates May Be Asynchronous](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/react-props-and-state-lab'>Props And State Lab</a> on Learn.co and start learning to code for free.</p>
-
-Walkthrough vids
-Part 1
-Part 2
-Part 3
-Part 4 https://youtu.be/f8gMWf6uRQg
