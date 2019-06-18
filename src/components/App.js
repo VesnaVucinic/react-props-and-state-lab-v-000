@@ -1,40 +1,25 @@
 import React from 'react'
-import MyFunctionalComponent from './MyFunctionalComponent.js'
-
 import Filters from './Filters'
 import PetBrowser from './PetBrowser'
+import { connect } from 'react-redux'
 
 class App extends React.Component {
   constructor() {
     super()
-
     this.state = {
-      pets: [],
-      filters: {
-        type: 'all'
-      }
+      pets: []
     }
 
-    this.onChangeType = this.onChangeType.bind(this)
   }
 
-// bind function in constructor
-  onChangeType(event){
-    console.log(event.target.value)
-    this.setState({
-      filters: {
-        type: event.target.value
-      }
-    })
-  }
 
   // arrow function automatically binds `this`
   onFindPetsClick = () => {
     let url = "/api/pets"
     // if this.state.filters.type is not all....
-    if (this.state.filters.type !== 'all') {
+    if (this.props.filters.type !== 'all') {
       // then adjust the url accordingly /api/pets?type=cat
-      url += `?type=${this.state.filters.type}`
+      url += `?type=${this.props.filters.type}`
     }
 
     fetch(url)
@@ -42,30 +27,38 @@ class App extends React.Component {
       .then(petsJSONArray => {
         this.setState({
           pets: petsJSONArray
-        }, ()=>console.log(this.state.pets))
+        }, ()=> console.log(this.state.pets))
       })
   }
 
   onAdoptPet = (id) => {
-    // const pet = Object.assign({}, this.state.pets.find(p => p.id === id))
-    // above and below are equiavalent
-    const pet = { ...this.state.pets.find(p => p.id === id)}
-    // set the state of a pet from the opposite of what it was...
-    pet.isAdopted = pet.isAdopted ? false : true
-    const index = this.state.pets.indexOf(pet)
-    console.log("index is", index)
+    // pet.isAdopted = true // <-- not allowed!!!!!
+    // what needs to happen here???
+    // 1. we could find the index of the pet in this.state.pets and use `.slice()`
+    // 2. we can make a copy of the pet, change its isAdpoted, then make of the array using `.map()` , and insert the changed pet in the right place, then replace the array
+    // 3. we can make an entire of the this.state.pets, find the pet, then change its isAdopted property and then replace the whole array
+    // let petsArrayCopy = this.state.pets.slice()
+
+    // let petsArrayCopy = [...this.state.pets]
+    // let thePet = petsArrayCopy.find(p => p.id === id )
+    // thePet.isAdopted = true
+
+    let petsArrayCopy = this.state.pets.map(p => {
+      if (p.id === id) { p.isAdopted = true }
+      return p
+    })
+
+    // last step: change this.state.pets to petsArrayCopy using `.setState()`
     this.setState({
-      pets: [...this.state.pets.slice(0, index), pet, ...this.state.pets(index, this.state.pets.length)]
-    }, console.log(this.state.pets))
-
-
+      pets: petsArrayCopy
+    })
   }
 
   render() {
     const nameObj = {name: "Howard"}
     return (
       <div className="ui container">
-        <MyFunctionalComponent props={ nameObj }/>
+
         <header>
           <h1 className="ui dividing header">React Animal Shelter</h1>
         </header>
@@ -73,12 +66,14 @@ class App extends React.Component {
           <div className="ui grid">
             <div className="four wide column">
               <Filters
-                onChangeType={this.onChangeType}
                 onFindPetsClick={this.onFindPetsClick}
               />
             </div>
             <div className="twelve wide column">
-              <PetBrowser onAdoptPet={this.onAdoptPet} pets={this.state.pets} />
+              <PetBrowser
+                onAdoptPet={this.onAdoptPet}
+                pets={this.state.pets}
+              />
             </div>
           </div>
         </div>
@@ -87,4 +82,9 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    filters: state.filters
+  }
+}
+export default connect(mapStateToProps)(App)
